@@ -1,0 +1,150 @@
+\hypertarget{_kluis___v2_8ino}{}\section{D\+:/\+Repositories/\+T\+I\+Locker/\+Arduino/\+Kluis\+\_\+\+V2/\+Kluis\+\_\+\+V2.ino File Reference}
+\label{_kluis___v2_8ino}\index{D\+:/\+Repositories/\+T\+I\+Locker/\+Arduino/\+Kluis\+\_\+\+V2/\+Kluis\+\_\+\+V2.\+ino@{D\+:/\+Repositories/\+T\+I\+Locker/\+Arduino/\+Kluis\+\_\+\+V2/\+Kluis\+\_\+\+V2.\+ino}}
+{\ttfamily \#include $<$S\+P\+I.\+h$>$}\newline
+{\ttfamily \#include $<$E\+E\+P\+R\+O\+M.\+h$>$}\newline
+{\ttfamily \#include $<$M\+F\+R\+C522.\+h$>$}\newline
+{\ttfamily \#include $<$Keypad.\+h$>$}\newline
+{\ttfamily \#include $<$Liquid\+Crystal\+\_\+\+I2\+C.\+h$>$}\newline
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a68e43a53828dc362ffbfaf71fcb91837}\label{_kluis___v2_8ino_a68e43a53828dc362ffbfaf71fcb91837}} 
+\#define {\bfseries K\+L\+U\+I\+S1}~37
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a84704d4c27c29a1998d824bf6b6ee3a1}\label{_kluis___v2_8ino_a84704d4c27c29a1998d824bf6b6ee3a1}} 
+\#define {\bfseries K\+L\+U\+I\+S2}~33
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a575e29343029abb4060374a8a0f63bad}\label{_kluis___v2_8ino_a575e29343029abb4060374a8a0f63bad}} 
+\#define {\bfseries K\+L\+U\+I\+S3}~35
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a81c9c9ecf7db08dbc15713bb762cd7c3}\label{_kluis___v2_8ino_a81c9c9ecf7db08dbc15713bb762cd7c3}} 
+\#define {\bfseries K\+L\+U\+I\+S4}~31
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a3bf20e3a4fae1233cde723ff7948e2d7}\label{_kluis___v2_8ino_a3bf20e3a4fae1233cde723ff7948e2d7}} 
+\#define {\bfseries K\+L\+U\+I\+S5}~44
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_ac092124beacdc241f77b816317ecb43f}\label{_kluis___v2_8ino_ac092124beacdc241f77b816317ecb43f}} 
+\#define {\bfseries K\+L\+U\+I\+S6}~40
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_af8d874a0d4ab499de9555a5a572ffd10}\label{_kluis___v2_8ino_af8d874a0d4ab499de9555a5a572ffd10}} 
+\#define {\bfseries K\+L\+U\+I\+S7}~42
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a03d4478d6b658925db8737ae4bf407c8}\label{_kluis___v2_8ino_a03d4478d6b658925db8737ae4bf407c8}} 
+\#define {\bfseries K\+L\+U\+I\+S8}~38
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a3ba9dc37ec368812187984e4abec0020}\label{_kluis___v2_8ino_a3ba9dc37ec368812187984e4abec0020}} 
+\#define {\bfseries K\+L\+U\+I\+S9}~45
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_af072914790f3df66c6ca3c10950ae160}\label{_kluis___v2_8ino_af072914790f3df66c6ca3c10950ae160}} 
+\#define {\bfseries K\+L\+U\+I\+S10}~41
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_ac803d45fb46357fcbe37d1eba9ce4c60}\label{_kluis___v2_8ino_ac803d45fb46357fcbe37d1eba9ce4c60}} 
+\#define {\bfseries K\+L\+U\+I\+S11}~43
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a1649ba2a62c7af010b32077ad6867f6b}\label{_kluis___v2_8ino_a1649ba2a62c7af010b32077ad6867f6b}} 
+\#define {\bfseries K\+L\+U\+I\+S12}~39
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a98600c8af55b1fe478edbbefe2b88587}\label{_kluis___v2_8ino_a98600c8af55b1fe478edbbefe2b88587}} 
+\#define {\bfseries K\+L\+U\+I\+S13}~36
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_af4a916457a7db85399080b9737f9ccb2}\label{_kluis___v2_8ino_af4a916457a7db85399080b9737f9ccb2}} 
+\#define {\bfseries K\+L\+U\+I\+S14}~32
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a01170a7b5070bd26f8e7d55328467d7b}\label{_kluis___v2_8ino_a01170a7b5070bd26f8e7d55328467d7b}} 
+\#define {\bfseries K\+L\+U\+I\+S15}~34
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_ad4fbc6a1e7aa1cea170fd6238be7c756}\label{_kluis___v2_8ino_ad4fbc6a1e7aa1cea170fd6238be7c756}} 
+\#define {\bfseries K\+L\+U\+I\+S16}~30
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_aa1bf756391a9960a2445236428e08068}\label{_kluis___v2_8ino_aa1bf756391a9960a2445236428e08068}} 
+\#define {\bfseries C\+H\+A\+R\+O\+F\+F\+S\+ET}~48
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a93d40d1de1ee786b74ada50aec0a7e9c}\label{_kluis___v2_8ino_a93d40d1de1ee786b74ada50aec0a7e9c}} 
+\#define {\bfseries T\+E\+X\+T\+I\+N\+T\+E\+R\+V\+AL}~6000
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a3f660dff51384cecab7ee796d548d5fe}\label{_kluis___v2_8ino_a3f660dff51384cecab7ee796d548d5fe}} 
+\#define {\bfseries V\+A\+U\+L\+T\+M\+E\+M\+O\+F\+F\+S\+ET}~105
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_aa3232d8d93a71284f97d96d70a4f5938}\label{_kluis___v2_8ino_aa3232d8d93a71284f97d96d70a4f5938}} 
+\#define {\bfseries N\+U\+M\+B\+E\+R\+O\+F\+V\+A\+U\+L\+TS}~16
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_ad43e36c5e1c0d5a2852f6abd0d59752c}\label{_kluis___v2_8ino_ad43e36c5e1c0d5a2852f6abd0d59752c}} 
+\#define {\bfseries R\+F\+I\+D\+T\+I\+M\+E\+O\+UT}~15
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a36932b0e869e0114f32e255f61306d6b}\label{_kluis___v2_8ino_a36932b0e869e0114f32e255f61306d6b}} 
+\#define {\bfseries R\+S\+T\+\_\+\+P\+IN}~2
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a86fac98c9b4c98a3e50fc45440878391}\label{_kluis___v2_8ino_a86fac98c9b4c98a3e50fc45440878391}} 
+\#define {\bfseries S\+S\+\_\+\+P\+IN}~53
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_ac672f817299d07cc428fe3f456235273}\label{_kluis___v2_8ino_ac672f817299d07cc428fe3f456235273}} 
+M\+F\+R\+C522 {\bfseries mfrc522} (S\+S\+\_\+\+P\+IN, R\+S\+T\+\_\+\+P\+IN)
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_ac21d052bacaf620de472c9d000f0be38}\label{_kluis___v2_8ino_ac21d052bacaf620de472c9d000f0be38}} 
+Liquid\+Crystal\+\_\+\+I2C {\bfseries lcd} (0x27, 20, 4)
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a4fc01d736fe50cf5b977f755b675f11d}\label{_kluis___v2_8ino_a4fc01d736fe50cf5b977f755b675f11d}} 
+void {\bfseries setup} ()
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_afe461d27b9c48d5921c00d521181f12f}\label{_kluis___v2_8ino_afe461d27b9c48d5921c00d521181f12f}} 
+void {\bfseries loop} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a829655a147df70dd4cc94eae40a2204e}\label{_kluis___v2_8ino_a829655a147df70dd4cc94eae40a2204e}} 
+const byte {\bfseries R\+O\+WS} = 4
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_aefd90f1160eaa105bc910d4d7c46b815}\label{_kluis___v2_8ino_aefd90f1160eaa105bc910d4d7c46b815}} 
+const byte {\bfseries C\+O\+LS} = 4
+\item 
+char {\bfseries Keys} \mbox{[}4\mbox{]}\mbox{[}4\mbox{]}
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a6d6753e0ae098b31e2f84d4024e361cf}\label{_kluis___v2_8ino_a6d6753e0ae098b31e2f84d4024e361cf}} 
+byte {\bfseries row\+Pins} \mbox{[}R\+O\+WS\mbox{]} = \{4, 5, 6, 7\}
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_aa9fece7b062124080e4b2976f9a8b675}\label{_kluis___v2_8ino_aa9fece7b062124080e4b2976f9a8b675}} 
+byte {\bfseries col\+Pins} \mbox{[}C\+O\+LS\mbox{]} = \{8, 9, 10, 11\}
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a560cf48323e7951392704f4bbcb9b343}\label{_kluis___v2_8ino_a560cf48323e7951392704f4bbcb9b343}} 
+Keypad {\bfseries c\+Keypad} = Keypad( make\+Keymap(Keys), row\+Pins, col\+Pins, R\+O\+WS, C\+O\+LS)
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a2b91ea0bc21540d131b22cfdfe731575}\label{_kluis___v2_8ino_a2b91ea0bc21540d131b22cfdfe731575}} 
+bool {\bfseries admin} = false
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a522b2a57865b31c199c2638babe19420}\label{_kluis___v2_8ino_a522b2a57865b31c199c2638babe19420}} 
+int {\bfseries vaults\+Mapped\+To\+Pins} \mbox{[}$\,$\mbox{]} = \{ K\+L\+U\+I\+S1, K\+L\+U\+I\+S2, K\+L\+U\+I\+S3, K\+L\+U\+I\+S4, K\+L\+U\+I\+S5, K\+L\+U\+I\+S6, K\+L\+U\+I\+S7, K\+L\+U\+I\+S8, K\+L\+U\+I\+S9, K\+L\+U\+I\+S10, K\+L\+U\+I\+S11, K\+L\+U\+I\+S12, K\+L\+U\+I\+S13, K\+L\+U\+I\+S14, K\+L\+U\+I\+S15, K\+L\+U\+I\+S16 \}
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a493b57f443cc38b3d3df9c1e584d9d82}\label{_kluis___v2_8ino_a493b57f443cc38b3d3df9c1e584d9d82}} 
+int {\bfseries timeout} = 0
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a0bd719b7c2e503945cca08d162f603ff}\label{_kluis___v2_8ino_a0bd719b7c2e503945cca08d162f603ff}} 
+bool {\bfseries newcard} = true
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_acb727b700580681a32b288d9ebc9b762}\label{_kluis___v2_8ino_acb727b700580681a32b288d9ebc9b762}} 
+int {\bfseries text} = 0
+\item 
+\mbox{\Hypertarget{_kluis___v2_8ino_a86027ad9c9159f02624d136fb63364fe}\label{_kluis___v2_8ino_a86027ad9c9159f02624d136fb63364fe}} 
+unsigned long {\bfseries previous\+Millis} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{_kluis___v2_8ino_a25d47793dfeaea27fce0a4adfab962f7}\label{_kluis___v2_8ino_a25d47793dfeaea27fce0a4adfab962f7}} 
+\index{Kluis\+\_\+\+V2.\+ino@{Kluis\+\_\+\+V2.\+ino}!Keys@{Keys}}
+\index{Keys@{Keys}!Kluis\+\_\+\+V2.\+ino@{Kluis\+\_\+\+V2.\+ino}}
+\subsubsection{\texorpdfstring{Keys}{Keys}}
+{\footnotesize\ttfamily char Keys\mbox{[}4\mbox{]}\mbox{[}4\mbox{]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+  \{\textcolor{charliteral}{'1'}, \textcolor{charliteral}{'2'}, \textcolor{charliteral}{'3'}, \textcolor{charliteral}{'A'}\},
+  \{\textcolor{charliteral}{'4'}, \textcolor{charliteral}{'5'}, \textcolor{charliteral}{'6'}, \textcolor{charliteral}{'B'}\},
+  \{\textcolor{charliteral}{'7'}, \textcolor{charliteral}{'8'}, \textcolor{charliteral}{'9'}, \textcolor{charliteral}{'C'}\},
+  \{\textcolor{charliteral}{'*'}, \textcolor{charliteral}{'0'}, \textcolor{charliteral}{'#'}, \textcolor{charliteral}{'D'}\},
+\}
+\end{DoxyCode}

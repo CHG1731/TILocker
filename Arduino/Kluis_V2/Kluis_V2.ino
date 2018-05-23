@@ -1,6 +1,11 @@
+/**@file Kluis_V2.ino*/
 //Made by Felix Jochems
 //Questions about the code? Mail felixjochems@gmail.com
 //Version 1.1.14
+/*
+ * @mainpage Documentation
+ * @section Felix Jochems
+*/
 
 //Libs used
 #include <SPI.h>
