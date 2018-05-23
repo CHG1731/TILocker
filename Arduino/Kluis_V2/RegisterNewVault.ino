@@ -1,4 +1,4 @@
-/**@file RegisterNewVaulte.ino*/
+/**@file RegisterNewVault.ino*/
 void registerNewVault()
 {
   checkVaultAvailability();

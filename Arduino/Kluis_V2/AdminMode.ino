@@ -1,4 +1,6 @@
 /**@file AdminMode.ino*/
+/**@brief Starts the Admin mode*/
+/**@details If in the main loop admin is set to true and the correct admin key is given, this function will start.*/
 void startAdminMode()
 {
   bool cancel = false;

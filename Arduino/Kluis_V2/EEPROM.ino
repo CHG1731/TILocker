@@ -1,9 +1,11 @@
 /**@file EEPROM.ino*/
-const int EEPROM_MIN_ADDR = 0;
-const int EEPROM_MAX_ADDR = 4096;
+const int EEPROM_MIN_ADDR = 0; ///< Starting point of EEPROM
+const int EEPROM_MAX_ADDR = 4096; ///< End point of EEPROM, at least in the arduino Mega
 
-void resetVaultAvailability() //True = open | False = closed
+/**@brief Resets the vault availability*/
+void resetVaultAvailability()
 {
+  /**\code{.ino}*/
   EEPROM.write(200, 1); //Kluis 105
   EEPROM.write(201, 1); //Kluis 106
   EEPROM.write(202, 1); //Kluis 107
@@ -20,10 +22,13 @@ void resetVaultAvailability() //True = open | False = closed
   EEPROM.write(213, 1); //Kluis 118
   EEPROM.write(214, 1); //Kluis 119
   EEPROM.write(215, 1); //Kluis 120
+  /**\endcode*/
 }
 
+/**@brief Resets the passwords*/
 void resetPasswords()
 {
+  /**\code{.ino}*/
   //Kluis 105
   EEPROM.write(10, 0xFF);
   EEPROM.write(11, 0xFF);
@@ -105,8 +110,10 @@ void resetPasswords()
   EEPROM.write(160, 0xFF);
   EEPROM.write(161, 0xFF);
   EEPROM.write(162, 0xFF);
+  /**\endcode*/
 }
 
+/**@brief Reset the registered cards and rewrite the password locations*/
 void resetRegisteredVaults()
 {
   //1 || KLUISJE 105
@@ -222,6 +229,7 @@ void resetRegisteredVaults()
   EEPROM.write(2079, 160);
 }
 
+/**@brief Dump the contents of the EEPROM to the serial monitor*/
 void eeprom_serial_dump_column() //Copied directly from the arduino website
 {
   // counter
@@ -245,6 +253,7 @@ void eeprom_serial_dump_column() //Copied directly from the arduino website
   }
 }
 
+/**@brief Reset a single vault, it's password and it's availability*/
 void eeprom_admin_reset_vault(int vault)
 {
   int vaultMem = vaultToMemLoc(vault);
