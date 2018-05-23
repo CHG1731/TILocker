@@ -1,3 +1,4 @@
+/**@file LCD.ino*/
 void printVaultAvailability()
 {
   lcd.setCursor(0, 0);

@@ -6,6 +6,7 @@
  * @mainpage Documentation
  * @section Felix Jochems
 */
+#define DEBUG false
 
 //Libs used
 #include <SPI.h>
@@ -176,17 +177,21 @@ void loop()
     if (mfrc522.PICC_ReadCardSerial() && newcard)
     {
       newcard = false;
-      for (int i = 2000; i< 2085; i+=5)
+      for (int i = 2000; i<=2075; i+=5)
       {
+        if(DEBUG) { Serial.print("BYTE 0(RFID): ");Serial.print(mfrc522.uid.uidByte[0],HEX);Serial.print(" BYTE 0(EEPROM): ");Serial.print(EEPROM.read(i),HEX);Serial.print("    I:");Serial.print(i);Serial.println(); }
         if(mfrc522.uid.uidByte[0] == EEPROM.read(i))
         {
           i++;
+          if(DEBUG) { Serial.print("BYTE 1(RFID): ");Serial.print(mfrc522.uid.uidByte[1],HEX);Serial.print(" BYTE 1(EEPROM): ");Serial.print(EEPROM.read(i),HEX);Serial.print("    I:");Serial.print(i);Serial.println(); }
           if(mfrc522.uid.uidByte[1] == EEPROM.read(i))
           {
             i++;
+            if(DEBUG) { Serial.print("BYTE 2(RFID): ");Serial.print(mfrc522.uid.uidByte[2],HEX);Serial.print(" BYTE 2(EEPROM): ");Serial.print(EEPROM.read(i),HEX);Serial.print("    I:");Serial.print(i);Serial.println(); }
             if(mfrc522.uid.uidByte[2] == EEPROM.read(i))
             {
               i++;
+              if(DEBUG) { Serial.print("BYTE 3(RFID): ");Serial.print(mfrc522.uid.uidByte[3],HEX);Serial.print(" BYTE 3(EEPROM): ");Serial.print(EEPROM.read(i),HEX);Serial.print("    I:");Serial.print(i);Serial.println(); }
               if(mfrc522.uid.uidByte[3] == EEPROM.read(i))
               {
                 i++;
@@ -196,22 +201,22 @@ void loop()
               }
               else //FASE 4 BREAK
               {
-                i-=4;
+                i-=3;
               }
             }
             else //FASE 3 BREAK
             {
-              i-=3;
+              i-=2;
             }
           }
           else //FASE 2 BREAK
           {
-            i-=2;
+            i-=1;
           }
         }
         else //FASE 1 BREAK
         {
-          i-=1;
+          //DO NOTHING
         }
       }
       delay(1000);

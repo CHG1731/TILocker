@@ -1,3 +1,4 @@
+/**@file RegisterNewVaulte.ino*/
 void registerNewVault()
 {
   checkVaultAvailability();
@@ -65,35 +66,77 @@ void registerVault(int vaultnr)
     {
       if (mfrc522.PICC_ReadCardSerial())
       {
-        for (int i = 2000; i < 2080; i += 5) //Match UID of card with memory locations for card UID's
+        for (int i = 2000; i <= 2075; i += 5)
         {
-          if (mfrc522.uid.uidByte[0] != EEPROM.read(i)) {
-            /*Serial.print("Byte in MFRC: "); Serial.print("STAGE 1: "); Serial.print(EEPROM.read(i),BIN); Serial.print(" BYTE RECEIVED: "); Serial.println(mfrc522.uid.uidByte[0],BIN); */
-          }
-          else {
+          if (mfrc522.uid.uidByte[0] == EEPROM.read(i))
+          {
             i++;
-            if (mfrc522.uid.uidByte[1] != EEPROM.read(i)) { }
-            else {
+            if(DEBUG) { Serial.print("BYTE 1(RFID): "); Serial.print(mfrc522.uid.uidByte[1], HEX); Serial.print(" BYTE 1(EEPROM): "); Serial.print(EEPROM.read(i), HEX); Serial.print("    I:"); Serial.print(i); Serial.println(); }
+            if (mfrc522.uid.uidByte[1] == EEPROM.read(i))
+            {
               i++;
-              if (mfrc522.uid.uidByte[2] != EEPROM.read(i)) {  }
-              else {
+              if(DEBUG) { Serial.print("BYTE 2(RFID): "); Serial.print(mfrc522.uid.uidByte[2], HEX); Serial.print(" BYTE 2(EEPROM): "); Serial.print(EEPROM.read(i), HEX); Serial.print("    I:"); Serial.print(i); Serial.println(); }
+              if (mfrc522.uid.uidByte[2] == EEPROM.read(i))
+              {
                 i++;
-                if (mfrc522.uid.uidByte[3] != EEPROM.read(i)) {  }
-                else {
+                if(DEBUG) { Serial.print("BYTE 3(RFID): "); Serial.print(mfrc522.uid.uidByte[3], HEX); Serial.print(" BYTE 3(EEPROM): "); Serial.print(EEPROM.read(i), HEX); Serial.print("    I:"); Serial.print(i); Serial.println(); }
+                if (mfrc522.uid.uidByte[3] == EEPROM.read(i))
+                {
                   setLCDtext("This card is", "not eglible", 2500);
                   cancel = true;
                   return;
                 }
+                else //FASE 4 BREAK
+                {
+                  i -= 3;
+                }
+              }
+              else //FASE 3 BREAK
+              {
+                i -= 2;
               }
             }
+            else //FASE 2 BREAK
+            {
+              i -= 1;
+            }
+          }
+          else //FASE 1 BREAK
+          {
+            //DO NOTHING
           }
         }
-        registerPin(vaultnr);
-        cancel = true;
       }
+      registerPin(vaultnr);
+      cancel = true;
     }
   }
 }
+/* OLD FUNCTION FOR CARD MATCHING
+  for (int i = 2000; i < 2075; i += 5) //Match UID of card with memory locations for card UID's
+  {
+  if (mfrc522.uid.uidByte[0] != EEPROM.read(i)) {
+    //Serial.print("Byte in MFRC: "); Serial.print("STAGE 1: "); Serial.print(EEPROM.read(i),BIN); Serial.print(" BYTE RECEIVED: "); Serial.println(mfrc522.uid.uidByte[0],BIN);
+  }
+  else {
+    i++;
+    if (mfrc522.uid.uidByte[1] != EEPROM.read(i)) { }
+    else {
+      i++;
+      if (mfrc522.uid.uidByte[2] != EEPROM.read(i)) {  }
+      else {
+        i++;
+        if (mfrc522.uid.uidByte[3] != EEPROM.read(i)) {  }
+        else {
+          setLCDtext("This card is", "not eligible", 2500);
+          cancel = true;
+          return;
+        }
+      }
+    }
+  }
+  }
+*/
 
 void registerPin(int vaultnr)
 {

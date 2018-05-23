@@ -1,3 +1,4 @@
+/**@file openVault.ino*/
 void openVault(int vaultMem, int passMem)
 {
   int vault =  vaultMem - 2004;
@@ -47,8 +48,6 @@ void openVault(int vaultMem, int passMem)
           {
             if (EEPROM.read(passMem + 2) == third)
             {
-              //Serial.println("FULL MATCH FOUND, ACCES GRANTED");
-              //Serial.println(vaultsMappedToPins[remainder]);
               digitalWrite(vaultsMappedToPins[remainder], HIGH);
               setLCDtext("Acces Granted", 6500);
               digitalWrite(vaultsMappedToPins[remainder], LOW);
@@ -61,7 +60,7 @@ void openVault(int vaultMem, int passMem)
         } else {
           setLCDtext("Acces Denied", 2000);
         }
-        delay(random(300)); //Good luck with side channel analysis
+        delay(random(300));
         cancel = true;
         return;
       }

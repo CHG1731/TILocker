@@ -1,3 +1,4 @@
+/**@file EEPROM.ino*/
 const int EEPROM_MIN_ADDR = 0;
 const int EEPROM_MAX_ADDR = 4096;
 
